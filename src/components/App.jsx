@@ -1,7 +1,8 @@
+import { nanoid } from 'nanoid';
 import React, { Component } from 'react';
-// import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
+import { Filter } from './Filter';
 
 const initialContacts = [
   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -12,10 +13,10 @@ const initialContacts = [
 export class App extends Component {
   state = {
     contacts: initialContacts,
+    filter: '',
     name: '',
     number: '',
   };
-
   // handleNameChange = e => {
   //   this.setState({ name: e.currentTarget.value });
   // };
@@ -24,18 +25,18 @@ export class App extends Component {
   //     contacts: [...prevState.contacts, { contact }],
   //   }));
   // };
+  handleInputFilterChange = e => {
+    this.setState({ filter: e.currentTarget.value });
+
+    console.log(e.currentTarget.value);
+  };
 
   addContacts = (name, number) => {
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, name, number],
+      contacts: [...prevState.contacts, { id: nanoid(), name, number }],
       name: prevState.name + ' ' + name,
       number: prevState.number + ' ' + number,
     }));
-
-    // this.setState(prevState => ({
-    //   name: prevState.name + ' ' + name,
-    //   number: prevState.number + ' ' + number,
-    // }));
   };
 
   render() {
@@ -45,6 +46,18 @@ export class App extends Component {
         <ContactForm onSubmit={this.addContacts} />
 
         <h2>Contacts</h2>
+        {/* <label>
+          Find contacs by name
+          <input
+            type="text"
+            value={this.state.filter}
+            onChange={this.handleInputFilterChange}
+          />
+        </label> */}
+        <Filter
+          value={this.state.filter}
+          onChange={this.handleInputFilterChange}
+        />
         <ContactList items={this.state.contacts} />
       </div>
     );
