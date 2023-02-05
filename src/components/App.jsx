@@ -14,8 +14,6 @@ export class App extends Component {
   state = {
     contacts: initialContacts,
     filter: '',
-    name: '',
-    number: '',
   };
 
   filterContact = (contacts, query) => {
@@ -28,10 +26,17 @@ export class App extends Component {
   };
 
   addContacts = (name, number) => {
+    const { contacts } = this.state;
+    contacts.find(contact => contact.name === name) ||
+    contacts.find(contact => contact.number === number)
+      ? alert(`${name} is already in contacts.`)
+      : this.setState(prevState => ({
+          contacts: [...prevState.contacts, { id: nanoid(), name, number }],
+        }));
+  };
+  deleteContact = id => {
     this.setState(prevState => ({
-      contacts: [...prevState.contacts, { id: nanoid(), name, number }],
-      name: prevState.name + ' ' + name,
-      number: prevState.number + ' ' + number,
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
   };
 
@@ -51,7 +56,7 @@ export class App extends Component {
           value={this.state.filter}
           onChange={this.handleInputFilterChange}
         />
-        <ContactList items={filteredContacts} />
+        <ContactList items={filteredContacts} onDelete={this.deleteContact} />
       </div>
     );
   }
