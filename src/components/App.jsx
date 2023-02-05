@@ -17,18 +17,14 @@ export class App extends Component {
     name: '',
     number: '',
   };
-  // handleNameChange = e => {
-  //   this.setState({ name: e.currentTarget.value });
-  // };
-  // handleAddContact = contact => {
-  //   this.setState(prevState => ({
-  //     contacts: [...prevState.contacts, { contact }],
-  //   }));
-  // };
+
+  filterContact = (contacts, query) => {
+    return contacts.filter(
+      contact => contact.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
+  };
   handleInputFilterChange = e => {
     this.setState({ filter: e.currentTarget.value });
-
-    console.log(e.currentTarget.value);
   };
 
   addContacts = (name, number) => {
@@ -40,25 +36,22 @@ export class App extends Component {
   };
 
   render() {
+    const filteredContacts = this.filterContact(
+      this.state.contacts,
+      this.state.filter
+    );
+
     return (
       <div style={{ marginLeft: 20 }}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContacts} />
 
         <h2>Contacts</h2>
-        {/* <label>
-          Find contacs by name
-          <input
-            type="text"
-            value={this.state.filter}
-            onChange={this.handleInputFilterChange}
-          />
-        </label> */}
         <Filter
           value={this.state.filter}
           onChange={this.handleInputFilterChange}
         />
-        <ContactList items={this.state.contacts} />
+        <ContactList items={filteredContacts} />
       </div>
     );
   }
