@@ -1,8 +1,10 @@
+import { FilterBox } from './Filter.styled';
+
 export const Filter = ({ value, onChange }) => {
   return (
-    <label>
-      Find contacs by name
-      <input type="text" value={value} onChange={onChange} />
-    </label>
+    <FilterBox>
+      <label htmlFor="filter">Find contacs by name</label>
+      <input type="text" name="filter" value={value} onChange={onChange} />
+    </FilterBox>
   );
 };

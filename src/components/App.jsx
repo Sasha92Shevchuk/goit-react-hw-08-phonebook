@@ -1,5 +1,6 @@
 import { nanoid } from 'nanoid';
 import React, { Component } from 'react';
+import { Wrapper } from './App.styled';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
@@ -47,7 +48,7 @@ export class App extends Component {
     );
 
     return (
-      <div style={{ marginLeft: 20 }}>
+      <Wrapper style={{ marginLeft: 20 }}>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContacts} />
 
@@ -57,7 +58,7 @@ export class App extends Component {
           onChange={this.handleInputFilterChange}
         />
         <ContactList items={filteredContacts} onDelete={this.deleteContact} />
-      </div>
+      </Wrapper>
     );
   }
 }
