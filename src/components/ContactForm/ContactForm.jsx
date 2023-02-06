@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Form } from './ContactForm.styled';
 import { Button } from '../Button.styled';
+import PropTypes from 'prop-types';
 export class ContactForm extends Component {
   state = {
     name: '',
@@ -24,14 +25,20 @@ export class ContactForm extends Component {
       number: '',
     });
   };
-  handleNameChange = e => {
+  // handleNameChange = e => {
+  //   this.setState({
+  //     name: e.currentTarget.value,
+  //   });
+  // };
+  // handleNumberChange = e => {
+  //   this.setState({
+  //     number: e.currentTarget.value,
+  //   });
+  // };
+  //  замість двох методів використовуємо один handleInputChange
+  handleInputChange = e => {
     this.setState({
-      name: e.currentTarget.value,
-    });
-  };
-  handleNumberChange = e => {
-    this.setState({
-      number: e.currentTarget.value,
+      [e.currentTarget.name]: e.currentTarget.value,
     });
   };
   render() {
@@ -45,7 +52,7 @@ export class ContactForm extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           value={this.state.name}
-          onChange={this.handleNameChange}
+          onChange={this.handleInputChange}
         />
 
         <label htmlFor="number">Number</label>
@@ -56,7 +63,7 @@ export class ContactForm extends Component {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={this.state.number}
-          onChange={this.handleNumberChange}
+          onChange={this.handleInputChange}
         />
 
         <Button type="submit">Add contact</Button>
@@ -64,3 +71,7 @@ export class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

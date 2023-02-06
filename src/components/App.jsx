@@ -48,7 +48,7 @@ export class App extends Component {
     );
 
     return (
-      <Wrapper style={{ marginLeft: 20 }}>
+      <Wrapper>
         <h1>Phonebook</h1>
         <ContactForm onSubmit={this.addContacts} />
 
