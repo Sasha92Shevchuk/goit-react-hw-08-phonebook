@@ -25,17 +25,7 @@ export class ContactForm extends Component {
       number: '',
     });
   };
-  // handleNameChange = e => {
-  //   this.setState({
-  //     name: e.currentTarget.value,
-  //   });
-  // };
-  // handleNumberChange = e => {
-  //   this.setState({
-  //     number: e.currentTarget.value,
-  //   });
-  // };
-  //  замість двох методів використовуємо один handleInputChange
+
   handleInputChange = e => {
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value,

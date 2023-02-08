@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  margin-top: 20px;
-  margin-left: 20px;
+  margin: 20px auto 0;
   width: fit-content;
   border: 1px solid;
   border-style: dashed;
