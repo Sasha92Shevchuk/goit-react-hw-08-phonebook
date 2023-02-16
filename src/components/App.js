@@ -12,13 +12,13 @@ const useLocalStorage = (key, defaultValue) => {
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(state));
-  }, [state]);
+  }, [key, state]);
   useEffect(() => {
     const parsedContacts = JSON.parse(localStorage.getItem(key));
     if (parsedContacts) {
       setState(parsedContacts);
     }
-  }, []);
+  }, [key]);
   return [state, setState];
 };
 
