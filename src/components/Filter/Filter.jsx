@@ -1,16 +1,16 @@
 import { FilterBox } from './Filter.styled';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { filteredContacts } from 'redux/filterSlice';
 
-export const Filter = ({ value, onChange }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const handleInputFilterChange = e => {
+    dispatch(filteredContacts(e.target.value));
+  };
   return (
     <FilterBox>
       <label htmlFor="filter">Find contacs by name</label>
-      <input type="text" name="filter" value={value} onChange={onChange} />
+      <input type="text" name="filter" onChange={handleInputFilterChange} />
     </FilterBox>
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
