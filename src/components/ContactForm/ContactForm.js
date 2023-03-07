@@ -4,7 +4,7 @@ import { Button } from '../Button.styled';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contactsSlice';
 
-export default function ContactForm({ onSubmit }) {
+export default function ContactForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = e => {

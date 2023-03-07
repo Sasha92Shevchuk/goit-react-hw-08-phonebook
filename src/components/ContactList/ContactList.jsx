@@ -8,9 +8,10 @@ const filterContact = (contacts, query) => {
 };
 
 export const ContactList = () => {
-  const contacts = useSelector(getContacts);
+  const contactsObj = useSelector(getContacts);
+  const contactsArr = contactsObj.contacts;
   const filter = useSelector(getFilter);
-  const filteredContacts = filterContact(contacts, filter);
+  const filteredContacts = filterContact(contactsArr, filter);
 
   return (
     <List>
