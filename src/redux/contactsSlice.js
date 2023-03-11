@@ -2,9 +2,9 @@ import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const contactsInitialState = {
   contacts: [
-    // { id: '0', name: 'Oleksandr', number: '56435345435' },
-    // { id: '1', name: 'Anton', number: '6416484864484864' },
-    // { id: '2', name: 'Oleh', number: '46545454545454' },
+    { id: '0', name: 'Oleksandr', number: '56435345435' },
+    { id: '1', name: 'Anton', number: '6416484864484864' },
+    { id: '2', name: 'Oleh', number: '46545454545454' },
   ],
 };
 
