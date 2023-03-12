@@ -2,7 +2,7 @@ import React from 'react';
 import { Form } from './ContactForm.styled';
 import { Button } from '../Button.styled';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContact } from 'redux/operations';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
     const { name, number } = e.target.elements;
-    dispatch(addContact(name.value, number.value));
+    dispatch(addContact({ name: name.value, phone: number.value }));
     e.target.reset();
   };
 
