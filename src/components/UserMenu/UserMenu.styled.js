@@ -9,3 +9,16 @@ export const Wrapper = styled.div`
 export const UserName = styled.p`
   font-weight: 700;
 `;
+
+export const LogOut = styled.button`
+  background-color: #bbd1bdfc;
+  border: none;
+  border-radius: 5px;
+  color: #333;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 250ms ease;
+  :hover {
+    background-color: #c8ddc9fc;
+  }
+`;

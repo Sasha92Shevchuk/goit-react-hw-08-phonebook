@@ -6,9 +6,9 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   padding: 12px;
   font-weight: 700;
-  color: #2a363b;
+  color: #333;
 
-  &:active {
-    color: #e84a5f;
+  :active {
+    color: red;
   }
 `;

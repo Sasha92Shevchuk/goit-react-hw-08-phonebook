@@ -1,26 +1,9 @@
-const styles = {
-  container: {
-    minHeight: 'calc(100vh - 50px)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontWeight: 500,
-    fontSize: 48,
-    textAlign: 'center',
-  },
-};
+import { Box, H1 } from 'components/CommonStyles/CommonStyles';
 
 export default function Home() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>
-        Welcome to Phonebook application
-        <span role="img" aria-label="Greeting icon">
-          💁‍♀️
-        </span>
-      </h1>
-    </div>
+    <Box>
+      <H1>Welcome to Phonebook application</H1>
+    </Box>
   );
 }
