@@ -10,7 +10,7 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
     const { name, number } = e.target.elements;
-    dispatch(addContact({ name: name.value, phone: number.value }));
+    dispatch(addContact({ name: name.value, number: number.value }));
     e.target.reset();
   };
 
