@@ -1,5 +1,4 @@
-import { Button } from '../Button.styled';
-import { Item } from './Contact.styled';
+import { Box, BtnDelete, Image, Item } from './Contact.styled';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
@@ -12,11 +11,17 @@ export const Contact = ({ item: { id, name, number } }) => {
 
   return (
     <Item>
-      <span>{name}: </span>
-      <span>{number}</span>
-      <Button type="button" onClick={handleDelete}>
+      <Image
+        src={`https://ui-avatars.com/api/?name=${name}&background=random&size=60&rounded=true`}
+        alt={name}
+      />
+      <Box>
+        <span>{name} </span>
+        <span> Mobile: {number}</span>
+      </Box>
+      <BtnDelete type="button" onClick={handleDelete}>
         Delete
-      </Button>
+      </BtnDelete>
     </Item>
   );
 };

@@ -3,6 +3,6 @@ import styled from '@emotion/styled';
 export const FilterBox = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
 `;

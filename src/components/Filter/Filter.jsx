@@ -1,6 +1,7 @@
 import { FilterBox } from './Filter.styled';
 import { useDispatch } from 'react-redux';
 import { filteredContacts } from 'redux/filterSlice';
+import { Label } from 'components/RegisterForm/RegisterForm.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -9,8 +10,10 @@ export const Filter = () => {
   };
   return (
     <FilterBox>
-      <label htmlFor="filter">Find contacs by name</label>
-      <input type="text" name="filter" onChange={handleInputFilterChange} />
+      <Label>
+        Find contacs by name
+        <input type="text" name="filter" onChange={handleInputFilterChange} />
+      </Label>
     </FilterBox>
   );
 };

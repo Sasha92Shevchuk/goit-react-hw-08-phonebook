@@ -1,6 +1,5 @@
 import React from 'react';
-import { Form } from './ContactForm.styled';
-import { Button } from '../Button.styled';
+import { Form, Label, Submit } from './ContactForm.styled';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
 
@@ -16,25 +15,29 @@ export default function ContactForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name </label>
-      <input
-        type="text"
-        name="name"
-        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
-      />
+      <Label>
+        Name
+        <input
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+      </Label>
 
-      <label htmlFor="number">Number</label>
-      <input
-        type="tel"
-        name="number"
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        required
-      />
+      <Label>
+        Number
+        <input
+          type="tel"
+          name="number"
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+      </Label>
 
-      <Button type="submit">Add contact</Button>
+      <Submit type="submit">Add contact</Submit>
     </Form>
   );
 }
