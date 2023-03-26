@@ -1,9 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { Spinner } from 'components/Spinner/Spinner';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { selectIsRefreshing } from 'redux/auth/selectors';
 import { Form, Label, Submit } from './LoginForm.styled';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectIsRefreshing);
+  console.log('LoginForm ~ loading:', loading);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -27,7 +31,9 @@ export const LoginForm = () => {
         Password
         <input type="password" name="password" />
       </Label>
-      <Submit type="submit">Log In</Submit>
+      <Submit type="submit" disabled={loading}>
+        {loading ? <Spinner size={24} /> : 'Log In'}
+      </Submit>
     </Form>
   );
 };

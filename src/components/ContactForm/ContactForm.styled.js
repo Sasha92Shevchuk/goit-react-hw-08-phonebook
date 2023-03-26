@@ -2,19 +2,21 @@ import styled from '@emotion/styled';
 
 export const Form = styled.form`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 15px;
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 10px;
+ 
   font-weight: bold;
   color: #4a4a4a;
   input {
-    width: 100%;
+    width: 210px;
+    height: 20px;
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -25,13 +27,16 @@ export const Label = styled.label`
 `;
 
 export const Submit = styled.button`
+  width: 40px;
+  height: 40px;
   background-color: #bbd1bdfc;
   font-weight: bold;
   color: #4a4a4a;
-  margin-top: 20px;
-  padding: 10px 20px;
+  margin-left: 20px;
+  padding: 0;
   border: none;
   border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   position: relative;
   overflow: hidden;

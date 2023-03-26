@@ -1,17 +1,14 @@
 import React, { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
-// import { fetchContacts } from 'redux/operations';
-// import { selectError, selectIsLoading } from 'redux/selectors';
-// import { Wrapper } from './App.styled';
-// import ContactForm from './ContactForm';
-// import { ContactList } from './ContactList';
-// import { Filter } from './Filter';
+import { Navigate } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
+import Loader from './Loader/Loader';
+import { EditContactModal } from './EditContactModal/EditContactModal';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -27,7 +24,16 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+      }}
+    >
+      <Loader size={200} />
+    </div>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -48,12 +54,15 @@ export const App = () => {
           }
         />
         <Route
-          path="/contacts"
+          path="/contacts/*"
           element={
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
-        />
+        >
+          <Route path="edit/:contactId" element={<EditContactModal />} />
+        </Route>
       </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 };

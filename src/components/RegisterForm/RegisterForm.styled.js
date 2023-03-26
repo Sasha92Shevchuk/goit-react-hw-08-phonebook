@@ -59,16 +59,3 @@ export const Submit = styled.button`
     }
   }
 `;
-// export const Submit = styled.button`
-//   background-color: #4e54c8;
-//   color: #fff;
-//   padding: 10px 20px;
-//   border: none;
-//   border-radius: 5px;
-//   cursor: pointer;
-//   transition: background-color 0.2s ease-in-out;
-//   margin-top: 20px;
-//   :hover {
-//     background-color: #8f94fb;
-//   }
-// `;

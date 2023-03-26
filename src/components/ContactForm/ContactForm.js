@@ -1,15 +1,37 @@
 import React from 'react';
 import { Form, Label, Submit } from './ContactForm.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
+import { selectFilterContacts, selectIsLoading } from 'redux/selectors';
+import { toast } from 'react-toastify';
+import { FaCheckCircle } from 'react-icons/fa';
 
 export default function ContactForm() {
   const dispatch = useDispatch();
+  const loading = useSelector(selectIsLoading);
+  const existingContacts = useSelector(selectFilterContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
     const { name, number } = e.target.elements;
+    if (name.value === '') {
+      toast.error('Please, enter name');
+    }
+    if (number.value.length < 12 || number.value.length > 12) {
+      toast.warning('The number must consist of 12 digits');
+      return;
+    }
+
+    if (existingContacts.some(contact => contact.name === name.value)) {
+      toast.warning('Contact with that name already exists');
+      return;
+    }
+    if (existingContacts.some(contact => contact.number === number.value)) {
+      toast.warning('Contact with that number already exists');
+      return;
+    }
     dispatch(addContact({ name: name.value, number: number.value }));
+    toast.success(`Contact "${name.value.toUpperCase()}" has been added`);
     e.target.reset();
   };
 
@@ -37,7 +59,9 @@ export default function ContactForm() {
         />
       </Label>
 
-      <Submit type="submit">Add contact</Submit>
+      <Submit type="submit" disabled={loading}>
+        <FaCheckCircle size={24} />
+      </Submit>
     </Form>
   );
 }
